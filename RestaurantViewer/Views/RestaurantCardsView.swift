@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RestaurantCardsView: View {
     @StateObject var restaurantViewModel = RestaurantViewModel(restaurantService: YelpAPI())
-    @StateObject var locationManager = LocationManager()
+    @StateObject var locationManager = LocationManager() // to gain access to users location
 
  
     var body: some View {

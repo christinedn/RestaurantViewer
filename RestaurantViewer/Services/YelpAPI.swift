@@ -11,14 +11,6 @@ protocol RestaurantAPIProtocol {
     func fetchRestaurants(lat: Double, lon: Double, limit: Int, offset: Int, completion: @escaping ([Restaurant]) -> Void)
 }
 
-class GoogleReviewsAPI : RestaurantAPIProtocol {
-    static let apiKey = "googleapikey"
-    
-    func fetchRestaurants(lat: Double, lon: Double, limit: Int, offset: Int, completion: @escaping ([Restaurant]) -> Void) {
-        
-    }
-}
-
 class YelpAPI : RestaurantAPIProtocol {
     static let apiKey = "itoMaM6DJBtqD54BHSZQY9WdWR5xI_CnpZdxa3SG5i7N0M37VK1HklDDF4ifYh8SI-P2kI_mRj5KRSF4_FhTUAkEw322L8L8RY6bF1UB8jFx3TOR0-wW6Tk0KftNXXYx"
 
@@ -30,6 +22,7 @@ class YelpAPI : RestaurantAPIProtocol {
         
         request.setValue("Bearer \(YelpAPI.apiKey)", forHTTPHeaderField: "Authorization")
 
+        // make HTTP request
         URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data else { return }
             do {

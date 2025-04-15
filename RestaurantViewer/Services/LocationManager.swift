@@ -14,12 +14,12 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
 
     override init() {
         super.init()
-        manager.delegate = self
-        manager.requestWhenInUseAuthorization()
-        manager.startUpdatingLocation()
+        manager.delegate = self // sets current class to handle delegate callbacks
+        manager.requestWhenInUseAuthorization() // prompts user for location access
+        manager.startUpdatingLocation() // to fetch location updates 
     }
 
-
+    // delegate method that is triggered when a new location update is received
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let loc = locations.first?.coordinate {
             location = loc
